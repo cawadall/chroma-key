@@ -1,0 +1,19 @@
+body {
+    background: black;
+    color:#CCCCCC;
+}
+#canvas2 {
+    background-image: url("cr7.jpg");
+    background-size: cover;
+}
+.float {
+    float: left;
+    border :1px solid #444444;
+    padding:10px;
+    margin: 10px 85px 0px -80px;
+    background:#3B3B3B;
+}
+#main {margin: 0px 0px 0px 200px;}
+#canvas1, #canvas2, #myVideoFinal {border: 1px solid white;}
+.float_down {float:left; margin: 300px -375px 0 0;}
+#myVideoFinal {float:left; margin: 385px -498px 0 0;}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>COLOR FILTER</title>
+    <link rel="stylesheet" type="text/css" href="colorfilter_stylesheet.css" media="screen">
+    <script src="color_filter.js"></script>
+  </head>
+
+  <body onload="colorfilter.init()">
+    <div id="main">
+    <div class="float">
+      <video id="myVideo" src="" type="video/mp4" preload="auto" width="500px" height="300px" controls loop>
+        Your browser does not support the video tag.
+      </video>
+
+      <form class="float_down" id="images"> Select the image you want for the chroma efect:<br>
+        <input type="radio" id="cr7" onclick="changeImage(this)" checked> CR7<br>
+        <input type="radio" id="sky" onclick="changeImage(this)"> Sky<br>
+        <input type="radio" id="mordor" onclick="changeImage(this)"> Mordor
+      </form>
+
+      <!--<video id="myVideoFinal" src="birds.mp4" type="video/mp4" preload="auto" width="500px" height="300px" loop>
+        Your browser does not support the video tag.
+      </video>-->
+    </div>
+    <div class="float">
+      <canvas id="canvas1" width="260" height="120"/></canvas>
+      <canvas id="canvas2" width="260" height="120"/></canvas>
+      <form method="get" id="sampler">
+        <fieldset>
+        <legend>PARAMETERS</legend>
+        R COMPONENT:<br>
+        min <input type="range" min="0" max="255" id="rcomponent1"><p id="rpmin" class="right">0</p>
+        max <input type="range" min="0" max="255" id="rcomponent2"><p id="rpmax" class="right">0</p>
+        G COMPONENT:<br>
+        min <input type="range" min="0" max="255" id="gcomponent1"><p id="gpmin" class="right">0</p>
+        max <input type="range" min="0" max="255" id="gcomponent2"><p id="gpmax" class="right">0</p>
+        B COMPONENT:<br>
+        min <input type="range" min="0" max="255" id="bcomponent1"><p id="bpmin" class="right">0</p>
+        max <input type="range" min="0" max="255" id="bcomponent2"><p id="bpmax" class="right">0</p>
+        <input type="button" onclick="filterEstablishment()" value="OK"></input>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  </body>
+</html>
