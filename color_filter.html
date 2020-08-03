@@ -10,7 +10,11 @@
   <body onload="colorfilter.init()">
     <div id="main">
     <div class="float">
-      <video id="myVideo" src="" type="video/mp4" preload="auto" width="500px" height="300px" controls loop>
+      <div id="planb" style="display: none">
+        <center><p>Select a Local Video</p></center>
+        <center><input id="vi" type="file" accept="video/*" style="margin-left: 20%;"/></center>
+      </div>
+      <video id="myVideo" src="" type="video/mp4" crossOrigin="Anonymous" preload="auto" width="500px" height="300px" controls loop>
         Your browser does not support the video tag.
       </video>
 

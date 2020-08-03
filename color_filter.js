@@ -1,6 +1,4 @@
-// WebRTC = Web Real Time Communication
-// La aplicación solicitará al Sistema Opertaivo que habilite el hardware (cámara y micro) a través de drivers.
-// getUserMEdia consigue crear un elemento video con el vídeo capturado de la cámara, proporcionando una URL ficticia.
+/* Chroma Key effect form either the local camera or a local video file */
 
 var rtop = 255, gtop = 255, btop = 255;
 var rdown = 0, gdown = 0, bdown = 0;
@@ -15,10 +13,21 @@ function hasGetUserMedia() {
 var errorCallback = function(e) {
     console.log('Rejected!', e);
     colorfilter.video = document.getElementById('myVideo');
-    colorfilter.video.src = 'birds.mp4';
+    document.getElementById('planb').style.display = "block";
+    colorfilter.input = document.getElementById('vi');
+    colorfilter.input.addEventListener('change', onInputChange, false);
 };
 
-  colorfilter.init = function init() {
+var onInputChange = function() {
+    const [file] = colorfilter.input.files;
+    if (!file) {
+        alert('No file selected!');
+    }
+    var url = window.URL.createObjectURL(file);
+    colorfilter.video.src = url;
+}
+
+colorfilter.init = function init() {
 
     options = document.getElementById("sampler");
     options.addEventListener("mouseup", filterEstablishment, false);
@@ -68,14 +77,15 @@ var errorCallback = function(e) {
     }
     colorfilter.computeFrame(); // chroma-keying effect
     let self = colorfilter;
-    setTimeout(function() {self.timerCallback();}, 0); // en ejecución todo el tiempo
+    setTimeout(function() {self.timerCallback();}, 0);
   },
 
   colorfilter.computeFrame = function computeFrame() {
+      
       colorfilter.ctx1.drawImage(colorfilter.video, 0, 0, colorfilter.width, colorfilter.height); // draws actual frame
       let frame = colorfilter.ctx1.getImageData(0, 0, colorfilter.width, colorfilter.height); // get 32-bit pixel image data of the actual frame
       let l = frame.data.length / 4; // number of pixels in the image
-      for (let i = 0; i < l; i++) { // analyses eache frame's pixel, and extracts rgb components
+      for (let i = 0; i < l; i++) { // analyses each frame's pixel, and extracts rgb components
         let r = frame.data[i * 4 + 0];
         let g = frame.data[i * 4 + 1];
         let b = frame.data[i * 4 + 2];
